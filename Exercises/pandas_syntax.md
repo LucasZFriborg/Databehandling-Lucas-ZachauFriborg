@@ -158,6 +158,19 @@ Gör diagram direkt från pandas.
 `plt.show()`
 Seaborn = lättare och snyggare visualiseringar.
 
+### Plotly Express
+`import plotly.express as px`
+`fig = px.line(df, x='datum', y='värde')`
+`fig.show()`.
+Exempel på användning:
+`px.scatter(df, x='längd', y='vikt')`
+`px.bar(df, x='kategori', y='antal')`
+`px.histogram(df, x='ålder')`
+`px.box(df, y='inkomst')`
+`px.area(df, x='tid', y='försäljning')`.
+Plotly Express är en modul i Plotly som gör det enkelt att: visualisera data, 
+klicka/zooma i grafen, se hover-värden (t.ex. “det här punktens exakta värde”)
+
 ### apply
 `df['double_age'] = df['age'].apply(lambda x: x*2)`
 Skapar ny kolumn genom att köra funktion på varje värde.
