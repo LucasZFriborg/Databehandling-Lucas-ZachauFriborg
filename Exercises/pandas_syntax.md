@@ -169,10 +169,25 @@ Räknar hur många per kategori (samma som 11).
 ### merge (SQL JOIN)
 `pd.merge(df1, df2, on='id', how='left')`
 Slår ihop två tabeller via gemensam kolumn – som i SQL.
+`pd.merge(left, right, on='key', indicator=True)`
+`indicator=True` gör att pandas lägger till en extra kolumn i resultatet som visar varje rad kom ifrån.
+Kolumnen heter: '_merge'
+left_only - raden fanns bara i left
+right_only - raden fanns bara i right
+both - raden fanns i båda
+Man använder indicator=True när man vill kolla vilka rader som matchade i merget och vilka som saknas.
 
 ### concat
-`pd.concat([df1, df2], axis=0)`
-Lägger ihop två tabeller ovanpå varandra.
+`pd.concat([df1, df2], axis=0)` eller `pd.concat([df1, df2], axis='index')`
+Lägger ihop två tabeller ovanpå varandra, staplar rader (vertikalt).
+`pd.concat([df1, df2], axis=1)` eller `pd.concat([df1, df2], axis='columns')`
+Lägger ihop två tabeller bredvid varandra, staplar kolumner (horisontalt).
+
+### join= i concat
+`pd.concat([df1, df2], axis=1, join='outer')`
+`pd.concat([df1, df2], axis=1, join='inner')`
+`join='outer'` (default) - behåll alla index från båda dfs → saknade värden blir NaN
+`join='inner` - behåll bara index som finns i båda dfs → allt annat slängs
 
 ### melt (wide till long)
 `pd.melt(df, id_vars=['student'], value_vars=['math','english'])`
