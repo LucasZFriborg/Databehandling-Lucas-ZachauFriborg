@@ -74,6 +74,11 @@ ger alla rader där age saknas.
 print(f'Rows where age is NaN: \n`{rows_age.index}`')
 .index visar vilka radnummer som saknar värde i age.
 
+### masking
+`higher_yes = df_cleaned[df_cleaned['higher'] == 'yes']['age']`
+`higher_no  = df_cleaned[df_cleaned['higher'] == 'no']['age']`.
+Filtrerar rader baserat på ett villkor → behåll bara rader där higher är "yes" eller "no" och ta ut deras age
+
 ### filtrera rader där kolumn inte är NaN
 `df[df['age'].notnull()]`
 alla rader där age finns.
