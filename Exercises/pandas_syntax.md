@@ -4,6 +4,8 @@
 `df = pd.read_csv('fil.csv', sep=';')`
 sep=';' behövs ofta i Europa.
 Detta läser in CSV till en tabell i pandas.
+`df = pd.read_csv('data.csv', index_col=0)`
+`index_col` = vilken kolumn som ska bli index när man läser in en fil.
 
 ### titta på kolumner
 `df.columns`
@@ -68,6 +70,9 @@ True för celler som INTE är tomma.
 ### filtrera rader där en kolumn är NaN
 `df[df['age'].isnull()]`
 ger alla rader där age saknas.
+`rows_age = df[df['age'].isnull()]`
+print(f'Rows where age is NaN: \n`{rows_age.index}`')
+.index visar vilka radnummer som saknar värde i age.
 
 ### filtrera rader där kolumn inte är NaN
 `df[df['age'].notnull()]`
