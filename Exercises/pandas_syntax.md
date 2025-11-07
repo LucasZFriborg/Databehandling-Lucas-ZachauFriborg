@@ -35,6 +35,12 @@ Byter kolumnnamn (t.ex för att göra datan tydligare).
 `df.columns = ['col1','col2','col3']`
 Sätter alla kolumnnamn på en gång.
 
+### skapa ny kolumn
+df['ny_kolumn'] = något.
+Skapa ny kolumn från två andra:
+df_cleaned['Alcohol'] = df_cleaned[['Dalc', 'Walc']].sum(axis=1)
+→ detta gör en ny kolumn som heter Alcohol.
+
 ### insert – lägga till kolumn på specifik plats
 `df.insert(0, 'newcol', 1)`
 Lägger ny kolumn på position 0 (första column).
@@ -90,7 +96,9 @@ rader där age eller freetime saknar värde.
 ### AND-villkor (&) – båda villkor måste vara sanna
 `df[(df['age'] > 15) & (df['age'] < 18)]`
 rader där age är mellan 16–17.
-man måste wrap:a villkoren i ( )
+man måste wrap:a villkoren i ( ).
+`mask_high = (df_cleaned['Alcohol'] >= 4) & (df_cleaned['age'].isnull())`
+`mask_low  = (df_cleaned['Alcohol'] < 4)  & (df_cleaned['age'].isnull())`
 
 ### notna – hitta värden som inte är NaN
 `df[df['age'].notna()]`
